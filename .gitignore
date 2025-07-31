@@ -1,0 +1,11 @@
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+vendor/
+node_modules/
+package-lock.json
+Gemfile.lock
+.bundle/
+assets/css/style.css
+assets/css/style.css.map

@@ -1,0 +1,66 @@
+# Site settings
+title: "Your Name"
+description: "Personal website featuring essays, projects, and professional information"
+url: "https://yourusername.github.io"
+baseurl: ""
+
+# Author information
+author:
+  name: "Your Name"
+  email: "your.email@example.com"
+  linkedin: "your-linkedin-username"
+  github: "your-github-username"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+# Collections
+collections:
+  essays:
+    output: true
+    permalink: /:collection/:name/
+  projects:
+    output: true
+    permalink: /:collection/:name/
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Exclude from processing
+exclude:
+  - node_modules/
+  - package.json
+  - package-lock.json
+  - tailwind.config.js
+  - postcss.config.js
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+
+# Sass configuration
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# Default front matter
+defaults:
+  - scope:
+      path: ""
+      type: "essays"
+    values:
+      layout: "essay"
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"

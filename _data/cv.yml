@@ -1,0 +1,99 @@
+personal:
+  name: "Your Name"
+  title: "Software Engineer & Creative Technologist"
+  email: "your.email@example.com"
+  phone: "+1 (555) 123-4567"
+  location: "San Francisco, CA"
+  website: "https://yourname.dev"
+  
+summary: "Passionate software engineer with 5+ years of experience building scalable web applications and leading technical teams. Specialized in full-stack development with a focus on user experience and modern web technologies."
+
+experience:
+  - company: "Tech Startup Inc."
+    position: "Senior Software Engineer"
+    location: "San Francisco, CA"
+    duration: "2022 - Present"
+    highlights:
+      - "Led development of core platform features serving 100K+ active users"
+      - "Architected microservices infrastructure reducing API response times by 40%"
+      - "Mentored 3 junior engineers and established code review processes"
+      - "Implemented automated testing pipeline improving deployment confidence"
+    
+  - company: "Digital Agency Co."
+    position: "Full Stack Developer"
+    location: "Remote"
+    duration: "2020 - 2022"
+    highlights:
+      - "Built 15+ client websites using React, Node.js, and modern frameworks"
+      - "Collaborated with design teams to implement pixel-perfect UI components"
+      - "Optimized site performance achieving 95+ Lighthouse scores"
+      - "Managed projects from conception to deployment and maintenance"
+    
+  - company: "StartupXYZ"
+    position: "Frontend Developer"
+    location: "New York, NY"
+    duration: "2019 - 2020"
+    highlights:
+      - "Developed responsive React applications for B2B SaaS platform"
+      - "Implemented complex data visualization features using D3.js"
+      - "Worked closely with UX team to improve user onboarding flow"
+      - "Contributed to design system and component library"
+
+education:
+  - institution: "University of Technology"
+    degree: "Bachelor of Science in Computer Science"
+    location: "Boston, MA"
+    year: "2019"
+    details: "Magna Cum Laude, GPA: 3.8/4.0"
+    
+  - institution: "FreeCodeCamp"
+    degree: "Full Stack Web Development Certificate"
+    year: "2018"
+    details: "300-hour curriculum covering responsive web design, algorithms, and data structures"
+
+skills:
+  technical:
+    - category: "Languages"
+      items: ["JavaScript", "TypeScript", "Python", "Go", "SQL"]
+    - category: "Frontend"
+      items: ["React", "Vue.js", "HTML5", "CSS3", "Tailwind CSS", "Next.js"]
+    - category: "Backend"
+      items: ["Node.js", "Express", "Django", "PostgreSQL", "MongoDB", "Redis"]
+    - category: "Tools & DevOps"
+      items: ["Git", "Docker", "AWS", "GitHub Actions", "Jest", "Webpack"]
+  
+  soft:
+    - "Team Leadership"
+    - "Technical Writing"
+    - "Project Management"
+    - "Cross-functional Collaboration"
+    - "Problem Solving"
+    - "Mentoring"
+
+projects:
+  - name: "Open Source Library"
+    description: "React component library with 1K+ GitHub stars"
+    technologies: ["React", "TypeScript", "Storybook"]
+    url: "https://github.com/yourusername/library"
+    
+  - name: "Personal Finance App"
+    description: "Full-stack application for expense tracking and budgeting"
+    technologies: ["React", "Node.js", "PostgreSQL"]
+    url: "https://finance-app.yourname.dev"
+
+certifications:
+  - name: "AWS Certified Solutions Architect"
+    issuer: "Amazon Web Services"
+    year: "2023"
+    
+  - name: "Google Analytics Certified"
+    issuer: "Google"
+    year: "2022"
+
+languages:
+  - language: "English"
+    proficiency: "Native"
+  - language: "Spanish"
+    proficiency: "Conversational"
+  - language: "French"
+    proficiency: "Basic"

@@ -1,0 +1,23 @@
+{% assign all_tags = site.essays | map: 'tags' | join: ',' | split: ',' | uniq | sort %}
+
+<div class="mb-8">
+  <div class="flex flex-wrap items-center gap-2 mb-4">
+    <span class="text-sm font-medium text-gray-700 mr-2">Filter by tag:</span>
+    
+    <button class="tag-button" data-tag="all">
+      All
+    </button>
+    
+    {% for tag in all_tags %}
+      {% unless tag == empty %}
+        <button class="tag-button" data-tag="{{ tag | strip }}">
+          {{ tag | strip }}
+        </button>
+      {% endunless %}
+    {% endfor %}
+  </div>
+  
+  <div class="text-sm text-gray-600">
+    <span class="essay-count"></span>
+  </div>
+</div>

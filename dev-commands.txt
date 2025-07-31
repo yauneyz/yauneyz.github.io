@@ -1,0 +1,47 @@
+PERSONAL WEBSITE - DEVELOPMENT COMMANDS
+=====================================
+
+DAILY DEVELOPMENT:
+------------------
+bundle exec jekyll serve
+# Starts local server at http://localhost:4000
+# Auto-rebuilds when files change
+# Press Ctrl+C to stop
+
+CSS CHANGES:
+------------
+npm run build-css
+# Rebuild Tailwind CSS after style changes
+# Run this if you modify assets/css/tailwind.css
+
+WATCH CSS (OPTIONAL):
+--------------------
+npm run build-css -- --watch
+# Automatically rebuilds CSS when you change styles
+# Keep this running in a separate terminal
+
+PRODUCTION BUILD:
+-----------------
+bundle exec jekyll build
+# Builds static site to _site/ folder
+# Use for final testing before deployment
+
+ADDING CONTENT:
+---------------
+# Essays: Create files in _essays/ folder
+# Projects: Create files in _projects/ folder  
+# CV: Edit _data/cv.yml
+# Site config: Edit _config.yml
+
+FIRST TIME SETUP (ALREADY DONE):
+--------------------------------
+bundle install
+npm install
+npm run build-css
+
+DEPLOYMENT:
+-----------
+# Just push to GitHub - Pages will build automatically
+git add .
+git commit -m "Update content"
+git push origin main
