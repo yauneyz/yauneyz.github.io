@@ -306,9 +306,9 @@ class StaticThreeScene {
   }
   
   onWindowResize() {
-    this.camera.aspect = this.container.clientWidth / this.container.clientHeight;
+    this.camera.aspect = this.container.clientWidth / 200;
     this.camera.updateProjectionMatrix();
-    this.renderer.setSize(this.container.clientWidth, this.container.clientHeight);
+    this.renderer.setSize(this.container.clientWidth, 200);
   }
   
   onMouseMove(event) {

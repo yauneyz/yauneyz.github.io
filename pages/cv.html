@@ -6,23 +6,7 @@ description: "Professional experience, skills, and background"
 ---
 
 <div class="max-w-4xl mx-auto">
-  <header class="mb-8 text-center">
-    <h1 class="text-4xl font-bold text-gray-100 mb-2">{{ site.data.cv.personal.name }}</h1>
-    <p class="text-xl text-gray-300 mb-4">{{ site.data.cv.personal.title }}</p>
-    
-    <div class="flex flex-wrap justify-center gap-4 text-sm text-gray-300">
-      <a href="mailto:{{ site.data.cv.personal.email }}" class="hover:text-blue-400 transition-colors">
-        {{ site.data.cv.personal.email }}
-      </a>
-      <span>{{ site.data.cv.personal.phone }}</span>
-      <span>{{ site.data.cv.personal.location }}</span>
-      {% if site.data.cv.personal.website %}
-        <a href="{{ site.data.cv.personal.website }}" class="hover:text-blue-400 transition-colors" target="_blank" rel="noopener">
-          {{ site.data.cv.personal.website }}
-        </a>
-      {% endif %}
-    </div>
-  </header>
+  
   
   <!-- Summary -->
   {% if site.data.cv.summary %}

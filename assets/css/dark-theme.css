@@ -12,7 +12,9 @@
   --text-muted: #6B7280;
   
   --accent-primary: #60A5FA;
+  --accent-primary-hover: #93C5FD;
   --accent-secondary: #34D399;
+  --accent-secondary-hover: #A7F3D0;
   --accent-warning: #F59E0B;
   
   --border-color: #374151;
@@ -300,7 +302,6 @@ p {
 .site-footer {
   border-top: 1px solid var(--border-subtle);
   padding: var(--spacing-2xl) 0;
-  margin-top: var(--spacing-3xl);
 }
 
 .social-links {
@@ -335,7 +336,7 @@ p {
 
 .hero {
   text-align: center;
-  padding: var(--spacing-3xl) 0;
+  padding: var(--spacing-xl) 0;
 }
 
 .hero-subtitle {
@@ -380,17 +381,18 @@ p {
 }
 
 .content-item {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-subtle);
+  background: var(--bg-accent);
+  border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
   padding: var(--spacing-xl);
   transition: all var(--transition-normal);
 }
 
 .content-item:hover {
-  background: var(--bg-accent);
-  border-color: var(--border-color);
+  background: var(--bg-hover);
+  border-color: var(--accent-primary);
   transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
 }
 
 .content-item-header {
@@ -525,6 +527,97 @@ p {
   .content-item {
     padding: var(--spacing-lg);
   }
+}
+
+/* ===== Style.css Overrides ===== */
+
+/* Override Tailwind Prose dark text colors */
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  color: var(--text-primary) !important;
+}
+
+.prose p {
+  color: var(--text-secondary) !important;
+}
+
+.prose a {
+  color: var(--accent-primary) !important;
+}
+
+.prose strong {
+  color: var(--text-primary) !important;
+}
+
+.prose code {
+  background-color: var(--bg-accent) !important;
+  color: var(--text-primary) !important;
+}
+
+.prose blockquote {
+  color: var(--text-secondary) !important;
+  border-left-color: var(--border-color) !important;
+}
+
+/* Override essay card light styling */
+.essay-card {
+  background: var(--bg-accent) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-secondary) !important;
+}
+
+.essay-card:hover {
+  background: var(--bg-hover) !important;
+  border-color: var(--accent-primary) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: var(--shadow-lg) !important;
+}
+
+/* Override tag button light styling */
+.tag-button {
+  background: var(--bg-accent) !important;
+  color: var(--text-secondary) !important;
+  border: 1px solid var(--border-subtle) !important;
+  transition: all var(--transition-fast) !important;
+}
+
+.tag-button:hover {
+  background: var(--bg-hover) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-color) !important;
+}
+
+.tag-button.active {
+  background: var(--accent-primary) !important;
+  color: white !important;
+  border-color: var(--accent-primary) !important;
+}
+
+.tag-button.active:hover {
+  background: #3B82F6 !important;
+}
+
+/* Override nav-link light styling */
+.nav-link.active {
+  background: rgba(96, 165, 250, 0.1) !important;
+  color: var(--accent-primary) !important;
+}
+
+/* Ensure our containers take precedence */
+.dark-theme .container {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 0 var(--spacing-md) !important;
+}
+
+.dark-theme .container-narrow {
+  max-width: 800px !important;
+  margin: 0 auto !important;
+  padding: 0 var(--spacing-md) !important;
 }
 
 /* ===== Print Styles ===== */
