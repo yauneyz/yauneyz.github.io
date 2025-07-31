@@ -8,13 +8,19 @@
   
   {% seo %}
   
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="{{ '/assets/css/dark-theme.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   {% feed_meta %}
 </head>
-<body class="bg-gray-50 min-h-screen">
+<body class="dark-theme">
   {% include header.html %}
   
-  <main class="container mx-auto px-4 py-8 max-w-6xl">
+  <main class="main-content">
     {{ content }}
   </main>
   

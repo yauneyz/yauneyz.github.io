@@ -1,15 +1,15 @@
 # Site settings
-title: "Your Name"
-description: "Personal website featuring essays, projects, and professional information"
-url: "https://yourusername.github.io"
+title: "Zac Yauney"
+description: "Personal website featuring essays and project"
+url: "https://zacyauney.com"
 baseurl: ""
 
 # Author information
 author:
-  name: "Your Name"
-  email: "your.email@example.com"
-  linkedin: "your-linkedin-username"
-  github: "your-github-username"
+  name: "Zac Yauney"
+  linkedin: "zac-yauney"
+  github: "yauneyz"
+  twitter: "yauneyz"
 
 # Build settings
 markdown: kramdown

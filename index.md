@@ -3,158 +3,55 @@ layout: default
 title: "Home"
 ---
 
-<div class="max-w-4xl mx-auto">
-  <!-- Hero Section -->
-  <section class="text-center py-16">
-    <h1 class="text-5xl font-bold text-gray-900 mb-6">
+<div class="container-narrow">
+  <section class="hero">
+    <h1 class="hero-title">
       Welcome to My Digital Space
     </h1>
-    <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+    <p class="hero-subtitle">
       I'm a passionate creator, technologist, and writer exploring the intersection of technology, creativity, and human experience. Here you'll find my thoughts, projects, and professional journey.
     </p>
     
-    <div class="flex flex-wrap justify-center gap-4">
-      <a href="/essays" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors">
-        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-        </svg>
-        Read My Essays
-      </a>
-      
-      <a href="/projects" class="inline-flex items-center px-6 py-3 bg-white text-gray-700 font-medium rounded-lg border border-gray-300 hover:bg-gray-50 transition-colors">
-        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-        </svg>
-        View My Projects
-      </a>
-    </div>
-  </section>
-  
-  <!-- Recent Essays -->
-  {% if site.essays.size > 0 %}
-    <section class="mb-16">
-      <div class="flex items-center justify-between mb-8">
-        <h2 class="text-3xl font-bold text-gray-900">Latest Essays</h2>
-        <a href="/essays" class="text-blue-600 hover:text-blue-800 font-medium transition-colors">
-          View all essays →
-        </a>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {% assign recent_essays = site.essays | sort: 'date' | reverse | limit: 4 %}
-        {% for essay in recent_essays %}
-          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-6">
-            <h3 class="text-xl font-semibold text-gray-900 mb-2">
-              <a href="{{ essay.url | relative_url }}" class="hover:text-blue-600 transition-colors">
-                {{ essay.title }}
-              </a>
-            </h3>
-            
-            <div class="text-sm text-gray-500 mb-3">
-              {{ essay.date | date: "%B %d, %Y" }}
-              {% if essay.read_time %} • {{ essay.read_time }} min read{% endif %}
-            </div>
-            
-            {% if essay.excerpt %}
-              <p class="text-gray-600 mb-4 leading-relaxed">
-                {{ essay.excerpt | truncate: 120 }}
-              </p>
-            {% endif %}
-            
-            {% if essay.tags %}
-              <div class="flex flex-wrap gap-2 mb-3">
-                {% for tag in essay.tags limit: 3 %}
-                  <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">
-                    {{ tag }}
-                  </span>
-                {% endfor %}
-              </div>
-            {% endif %}
-            
-            <a href="{{ essay.url | relative_url }}" class="text-blue-600 hover:text-blue-800 font-medium text-sm transition-colors">
-              Read more →
-            </a>
-          </article>
-        {% endfor %}
-      </div>
-    </section>
-  {% endif %}
-  
-  <!-- Featured Projects -->
-  {% if site.projects.size > 0 %}
-    <section class="mb-16">
-      <div class="flex items-center justify-between mb-8">
-        <h2 class="text-3xl font-bold text-gray-900">Featured Projects</h2>
-        <a href="/projects" class="text-blue-600 hover:text-blue-800 font-medium transition-colors">
-          View all projects →
-        </a>
-      </div>
-      
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {% assign featured_projects = site.projects | sort: 'date' | reverse | limit: 2 %}
-        {% for project in featured_projects %}
-          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-6 border-l-4 border-blue-500">
-            <h3 class="text-xl font-semibold text-gray-900 mb-3">
-              <a href="{{ project.url | relative_url }}" class="hover:text-blue-600 transition-colors">
-                {{ project.title }}
-              </a>
-            </h3>
-            
-            {% if project.technologies %}
-              <div class="flex flex-wrap gap-2 mb-3">
-                {% for tech in project.technologies limit: 4 %}
-                  <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-sm">
-                    {{ tech }}
-                  </span>
-                {% endfor %}
-              </div>
-            {% endif %}
-            
-            {% if project.excerpt %}
-              <p class="text-gray-600 mb-4 leading-relaxed">
-                {{ project.excerpt }}
-              </p>
-            {% endif %}
-            
-            <div class="flex items-center justify-between">
-              <div class="flex gap-3">
-                {% if project.github_url %}
-                  <a href="{{ project.github_url }}" class="text-gray-600 hover:text-gray-900 text-sm transition-colors" target="_blank" rel="noopener">
-                    GitHub
-                  </a>
-                {% endif %}
-                {% if project.demo_url %}
-                  <a href="{{ project.demo_url }}" class="text-blue-600 hover:text-blue-800 text-sm transition-colors" target="_blank" rel="noopener">
-                    Live Demo
-                  </a>
-                {% endif %}
-              </div>
-              
-              <a href="{{ project.url | relative_url }}" class="text-blue-600 hover:text-blue-800 font-medium text-sm transition-colors">
-                Learn more →
-              </a>
-            </div>
-          </article>
-        {% endfor %}
-      </div>
-    </section>
-  {% endif %}
-  
-  <!-- About Preview -->
-  <section class="bg-gray-100 rounded-lg p-8 text-center">
-    <h2 class="text-3xl font-bold text-gray-900 mb-4">About Me</h2>
-    <p class="text-gray-600 mb-6 max-w-2xl mx-auto leading-relaxed">
-      I'm passionate about building technology that makes a difference. When I'm not coding, you'll find me writing about the intersection of technology and humanity, exploring new ideas, and sharing insights with the community.
-    </p>
+    <nav class="hero-nav">
+      <a href="/essays" class="link">Essays</a>
+      <a href="/projects" class="link">Projects</a>
+      <a href="/cv" class="link">CV</a>
+    </nav>
     
-    <div class="flex justify-center gap-4">
-      <a href="/cv" class="inline-flex items-center px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors">
-        View My CV
-      </a>
+    <div class="social-links">
+      {% if site.author.github %}
+        <a href="https://github.com/{{ site.author.github }}" 
+           class="social-link"
+           target="_blank" 
+           rel="noopener"
+           aria-label="GitHub Profile">
+          <svg fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+          </svg>
+        </a>
+      {% endif %}
       
-      {% if site.author.email %}
-        <a href="mailto:{{ site.author.email }}" class="inline-flex items-center px-4 py-2 bg-white text-gray-700 font-medium rounded-lg border border-gray-300 hover:bg-gray-50 transition-colors">
-          Get In Touch
+      {% if site.author.linkedin %}
+        <a href="https://linkedin.com/in/{{ site.author.linkedin }}" 
+           class="social-link"
+           target="_blank" 
+           rel="noopener"
+           aria-label="LinkedIn Profile">
+          <svg fill="currentColor" viewBox="0 0 24 24">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+        </a>
+      {% endif %}
+      
+      {% if site.author.twitter %}
+        <a href="https://x.com/{{ site.author.twitter }}" 
+           class="social-link"
+           target="_blank" 
+           rel="noopener"
+           aria-label="X (Twitter) Profile">
+          <svg fill="currentColor" viewBox="0 0 24 24">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
         </a>
       {% endif %}
     </div>
