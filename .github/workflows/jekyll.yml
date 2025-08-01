@@ -1,10 +1,19 @@
-name: Build and Deploy Jekyll Site
+name: Deploy Jekyll with GitHub Pages dependencies preinstalled
 
 on:
   push:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   build-and-deploy:
