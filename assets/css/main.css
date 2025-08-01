@@ -6,7 +6,7 @@
   --color-secondary: #6b7280;
   --color-success: #10b981;
   --color-muted: #9ca3af;
-  
+
   /* Gray Scale */
   --gray-50: #f9fafb;
   --gray-100: #f3f4f6;
@@ -18,7 +18,7 @@
   --gray-700: #374151;
   --gray-800: #1f2937;
   --gray-900: #111827;
-  
+
   /* Blue Scale */
   --blue-200: #bfdbfe;
   --blue-300: #93c5fd;
@@ -26,11 +26,11 @@
   --blue-600: #2563eb;
   --blue-700: #1d4ed8;
   --blue-900: #1e3a8a;
-  
+
   /* Green Scale */
   --green-200: #bbf7d0;
   --green-900: #14532d;
-  
+
   /* Spacing */
   --spacing-1: 0.25rem;
   --spacing-2: 0.5rem;
@@ -43,7 +43,7 @@
   --spacing-md: 1rem;
   --spacing-sm: 0.5rem;
   --spacing-3xl: 3rem;
-  
+
   /* Typography */
   --font-size-sm: 0.875rem;
   --font-size-base: 1rem;
@@ -55,13 +55,13 @@
   --line-height-lg: 1.75rem;
   --line-height-2xl: 2rem;
   --line-height-relaxed: 1.625;
-  
+
   /* Borders */
   --border-radius: 0.25rem;
   --border-radius-full: 9999px;
   --border-radius-lg: 0.5rem;
   --border-subtle: var(--gray-700);
-  
+
   /* Shadows */
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
@@ -647,9 +647,14 @@ body {
 
 /* Site Structure */
 .site-header {
-  background-color: var(--gray-800);
-  border-bottom: 1px solid var(--gray-700);
+  /* background: rgba(17, 24, 39, 0.8); */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(75, 85, 99, 0.3);
   padding: var(--spacing-4) 0;
+  position: sticky;
+  top: 0;
+  z-index: 50;
 }
 
 .site-title {
@@ -665,10 +670,9 @@ body {
 }
 
 .site-footer {
-  background-color: var(--gray-800);
+  background: transparent;
   border-top: 1px solid var(--gray-700);
   padding: var(--spacing-8) 0;
-  margin-top: var(--spacing-12);
 }
 
 .social-links {
