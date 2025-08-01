@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "Personal website with Jekyll and Tailwind CSS",
   "scripts": {
-    "build-css": "tailwindcss -i ./assets/css/tailwind.css -o ./assets/css/style.css --watch",
-    "build": "bundle exec jekyll build",
+    "build-css": "tailwindcss -i ./assets/css/tailwind.css -o ./assets/css/style.css",
+    "watch-css": "tailwindcss -i ./assets/css/tailwind.css -o ./assets/css/style.css --watch",
+    "build": "npm run build-css && bundle exec jekyll build",
     "serve": "bundle exec jekyll serve"
   },
   "devDependencies": {
