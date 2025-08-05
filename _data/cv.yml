@@ -1,99 +1,92 @@
 personal:
-  name: "Your Name"
-  title: "Software Engineer & Creative Technologist"
-  email: "your.email@example.com"
-  phone: "+1 (555) 123-4567"
-  location: "San Francisco, CA"
-  website: "https://yourname.dev"
-  
-summary: "Passionate software engineer with 5+ years of experience building scalable web applications and leading technical teams. Specialized in full-stack development with a focus on user experience and modern web technologies."
+  name: "Zac Yauney"
+  title: "Entrepreneurial Web Developer & Data Scientist"
+  email: "zac.yauney@gmail.com"
+  phone: "(714) 264-7814"
+  location: "United States"
+  website: "https://www.thinky.dev"
+  github: "https://github.com/yauneyz"
+  linkedin: "https://linkedin.com/in/zac-yauney"
+
+summary: >
+  Entrepreneurial full-stack developer and data scientist with experience founding
+  a SaaS research-annotation platform, building production machine-learning
+  pipelines, and leading cross-functional teams. Skilled in Clojure/ClojureScript,
+  Python, React, cloud ML tooling, and modern data engineering practices.
 
 experience:
-  - company: "Tech Startup Inc."
-    position: "Senior Software Engineer"
-    location: "San Francisco, CA"
-    duration: "2022 - Present"
-    highlights:
-      - "Led development of core platform features serving 100K+ active users"
-      - "Architected microservices infrastructure reducing API response times by 40%"
-      - "Mentored 3 junior engineers and established code review processes"
-      - "Implemented automated testing pipeline improving deployment confidence"
-    
-  - company: "Digital Agency Co."
-    position: "Full Stack Developer"
+  - company: "thinky.dev"
+    position: "Entrepreneurial Web Developer"
     location: "Remote"
-    duration: "2020 - 2022"
+    duration: "Aug 2024 – Present"
     highlights:
-      - "Built 15+ client websites using React, Node.js, and modern frameworks"
-      - "Collaborated with design teams to implement pixel-perfect UI components"
-      - "Optimized site performance achieving 95+ Lighthouse scores"
-      - "Managed projects from conception to deployment and maintenance"
-    
-  - company: "StartupXYZ"
-    position: "Frontend Developer"
-    location: "New York, NY"
-    duration: "2019 - 2020"
+      - "Founded Thinky, a research-annotation platform that lets scholars view, highlight, and tag PDF passages for later query"
+      - "Implemented an Electron app with Clojure/ClojureScript (Reagent / re-frame) to render PDFs and introduced an innovative windowing system"
+
+  - company: "The Church of Jesus Christ of Latter-day Saints"
+    position: "Data Scientist"
+    location: "Salt Lake City, UT"
+    duration: "Nov 2022 – Aug 2024"
     highlights:
-      - "Developed responsive React applications for B2B SaaS platform"
-      - "Implemented complex data visualization features using D3.js"
-      - "Worked closely with UX team to improve user onboarding flow"
-      - "Contributed to design system and component library"
+      - "Built an XGBoost model for evaluating online advertising leads, lowering cost per conversion"
+      - "Developed an end-to-end model to surface high-potential leaders from a 12,500-person international pool"
+      - "Led a 4-person cross-functional team to ship a Tableau dashboard tracking new-missionary training"
+      - "Deployed machine-learning models in the cloud with Databricks"
+
+  - company: "Brigham Young University"
+    position: "Research Assistant"
+    location: "Provo, UT"
+    duration: "Jul 2020 – Aug 2022"
+    highlights:
+      - "Applied deep-learning (autoencoders, U-net) and time-series analysis to predict blood-glucose from infrared spectrometry data toward a non-invasive device"
+      - "Built a web server hosting a GIS algorithm to aid officials—including the President of Indonesia—in tsunami-evacuation planning"
+
+  - company: "NetQuarry, Inc."
+    position: "Full-Stack Web Developer"
+    location: "Fullerton, CA"
+    duration: "Apr 2015 – Nov 2017"
+    highlights:
+      - "Maintained and extended a 400-user CRM system (Bidspeed) for government contractors"
+      - "Built a system enabling rapid GSA-schedule applications, bringing in new business"
+      - "Defined SQL schemas and views for analytics dashboards"
+      - "Optimized performance of large SQL queries"
 
 education:
-  - institution: "University of Technology"
-    degree: "Bachelor of Science in Computer Science"
-    location: "Boston, MA"
-    year: "2019"
-    details: "Magna Cum Laude, GPA: 3.8/4.0"
-    
-  - institution: "FreeCodeCamp"
-    degree: "Full Stack Web Development Certificate"
-    year: "2018"
-    details: "300-hour curriculum covering responsive web design, algorithms, and data structures"
-
+  - institution: "Brigham Young University"
+    degree: "Master of Science in Applied Mathematics (Thesis)"
+    location: "Provo, UT"
+    year: "2024"
+    details: >
+      GPA 4.0. Thesis: “An Investigation of the Interactions of Gradient Coherence
+      and Network Pruning in Neural Networks”.
+  - institution: "Brigham Young University"
+    degree: "Bachelor of Science in Applied & Computational Mathematics"
+    location: "Provo, UT"
+    year: "2022"
+    details: "GPA 3.9, minors in Computer Science and Physics"
 skills:
   technical:
     - category: "Languages"
-      items: ["JavaScript", "TypeScript", "Python", "Go", "SQL"]
-    - category: "Frontend"
-      items: ["React", "Vue.js", "HTML5", "CSS3", "Tailwind CSS", "Next.js"]
-    - category: "Backend"
-      items: ["Node.js", "Express", "Django", "PostgreSQL", "MongoDB", "Redis"]
-    - category: "Tools & DevOps"
-      items: ["Git", "Docker", "AWS", "GitHub Actions", "Jest", "Webpack"]
-  
-  soft:
-    - "Team Leadership"
-    - "Technical Writing"
-    - "Project Management"
-    - "Cross-functional Collaboration"
-    - "Problem Solving"
-    - "Mentoring"
+      items: ["Python", "Clojure", "JavaScript", "Java", "C#"]
+    - category: "Frameworks & Libraries"
+      items: ["React", "Node.js","Reagent/re-frame", "Electron"]
+    - category: "Data & ML"
+      items: ["NumPy", "pandas", "SciPy", "sk-learn", "PyTorch", "Spark", "XGBoost", "MLflow", "Databricks", "Jupyter", "matplotlib", "SQL", "Tableau"]
+    - category: "Other"
+      items: ["SQL", "MERN stack", "AI Agents"]
 
 projects:
-  - name: "Open Source Library"
-    description: "React component library with 1K+ GitHub stars"
-    technologies: ["React", "TypeScript", "Storybook"]
-    url: "https://github.com/yourusername/library"
-    
-  - name: "Personal Finance App"
-    description: "Full-stack application for expense tracking and budgeting"
-    technologies: ["React", "Node.js", "PostgreSQL"]
-    url: "https://finance-app.yourname.dev"
-
-certifications:
-  - name: "AWS Certified Solutions Architect"
-    issuer: "Amazon Web Services"
-    year: "2023"
-    
-  - name: "Google Analytics Certified"
-    issuer: "Google"
-    year: "2022"
+  - name: "Thinky Research-Annotation Platform"
+    description: "Electron-based app for scholars to highlight, tag, and query PDF research."
+    technologies: ["ClojureScript", "Electron", "Reagent", "re-frame"]
+    url: "https://www.thinky.dev"
+# certifications:
+#   - name: "AWS Certified Cloud Practitioner"
+#     issuer: "Amazon Web Services"
+#     year: "2024"
 
 languages:
   - language: "English"
     proficiency: "Native"
   - language: "Spanish"
-    proficiency: "Conversational"
-  - language: "French"
-    proficiency: "Basic"
+    proficiency: "Intermediate"

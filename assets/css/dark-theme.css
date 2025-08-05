@@ -294,7 +294,7 @@ p {
 }
 
 .site-title:hover {
-  color: var(--accent-primary);
+  color: #c0c0c0;
 }
 
 /* ===== Footer Styles ===== */

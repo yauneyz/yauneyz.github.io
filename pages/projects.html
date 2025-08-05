@@ -10,7 +10,7 @@ description: "A showcase of my technical projects and creative work"
   
   {% if site.projects.size > 0 %}
     <div class="content-list">
-      {% assign sorted_projects = site.projects | sort: 'date' | reverse %}
+      {% assign sorted_projects = site.projects | where: 'published', true | sort: 'date' | reverse %}
       {% for project in sorted_projects %}
         <article class="content-item">
           <div class="content-item-header">

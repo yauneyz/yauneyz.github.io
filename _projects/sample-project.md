@@ -4,6 +4,7 @@ technologies: [React, Node.js, PostgreSQL, Tailwind CSS]
 github_url: "https://github.com/yourusername/finance-tracker"
 demo_url: "https://finance-tracker-demo.netlify.app"
 excerpt: "A full-stack web application for tracking personal expenses and income with data visualization and budget management features."
+published: false
 ---
 
 # Personal Finance Tracker

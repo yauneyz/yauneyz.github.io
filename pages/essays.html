@@ -12,7 +12,7 @@ description: "Thoughts and insights on technology, creativity, and life"
   
   {% if site.essays.size > 0 %}
     <div class="content-list">
-      {% assign sorted_essays = site.essays | sort: 'date' | reverse %}
+      {% assign sorted_essays = site.essays | where: 'published', true | sort: 'date' | reverse %}
       {% for essay in sorted_essays %}
         <article class="content-item essay-card" data-tags="{% for tag in essay.tags %}{{ tag }}{% unless forloop.last %},{% endunless %}{% endfor %}">
           <div class="content-item-header">
