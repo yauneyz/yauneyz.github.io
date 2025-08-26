@@ -1,0 +1,205 @@
+---
+title: "Thesis: Gradient Coherence, Diffs & Pruning"
+technologies: [Python, PyTorch, matplotlib]
+demo_url: "https://scholarsarchive.byu.edu/cgi/viewcontent.cgi?article=11354&context=etd"
+excerpt: "An investigation into the behavior of gradients durning training of a simple CNN image classifier and how it relates to generalization."
+published: true
+sort_order: 30
+---
+
+TL;DR
+
+Core idea: When a model is learning generalizable structure, per‑example gradients tend to point in similar directions (gradient coherence). I introduce an element‑wise proxy (diffs) and show it supports practical network pruning.
+
+Key results: (1) Coherence is reliably higher on real vs. random data; (2) Diff‑based pruning can beat or match magnitude pruning in several settings; (3) For a fixed non‑zero parameter budget, sparse networks derived from larger parents can outperform equally sized dense models.
+
+Why it matters: Coherence/“diffs” offer a simple, data‑aware lens on generalization that translates into concrete engineering wins (smaller, faster models) and influences how I build software end‑to‑end.
+
+1) Problem & Motivation
+
+Deep nets generalize well despite extreme over‑parameterization. Classical capacity‑control views fail to fully explain this. I explore gradient coherence as a mechanism: if most examples nudge parameters in aligned directions, the model is likely learning shared, transferable structure.
+
+Goals
+
+Empirically validate coherence as a signal of generalizable learning (vs. memorization).
+
+Devise a parameter‑level quantity (diffs) that can rank weights for pruning.
+
+Turn the signal into practical sparsity: smaller models with competitive accuracy.
+
+2) Method: From Coherence → Diffs → Pruning
+2.1 Coherence
+
+For per‑example gradients 
+gz
+g
+z
+	​
+
+, coherence 
+α
+α measures the alignment of the average gradient relative to average gradient magnitude:
+
+α=∥Ez[gz]∥2Ez[∥gz∥2]
+α=
+E
+z
+	​
+
+[∥g
+z
+	​
+
+∥
+2
+	​
+
+]
+∥E
+z
+	​
+
+[g
+z
+	​
+
+]∥
+2
+	​
+
+	​
+
+
+
+
+High 
+α
+α indicates many samples are pointing parameters in a similar direction.
+
+2.2 Diffs (an element‑wise proxy)
+
+Full coherence is network‑level. To prune, I need a per‑parameter score. I define a parameter’s diff as the mean sign of its per‑example gradients over a sweep of the dataset:
+
+diffp=1∣D∣∑z∈Dsign(∇θℓ(z))p
+diff
+p
+	​
+
+=
+∣D∣
+1
+	​
+
+z∈D
+∑
+	​
+
+sign(∇
+θ
+	​
+
+ℓ(z))
+p
+	​
+
+
+
+
+Intuition: if most examples agree on the direction a weight should move, that weight is likely contributing to generalizable structure. Large‑magnitude diffs → valuable parameters.
+
+2.3 Pruning with diffs
+
+Train for a short burn‑in; pick an epoch of high coherence.
+
+Freeze weights; compute diffs over the training set.
+
+Prune smallest‑magnitude diffs (globally or per‑layer); optionally fine‑tune.
+
+3) Experiments & Findings (high level)
+
+Real vs. Random: On CIFAR‑10 with ResNet‑50 and ViT, coherence is substantially higher in early training on real labels than on Gaussian noise—even when the noisy run eventually memorizes. This supports coherence as a “learning real structure” signal.
+
+Ruling out confounds: Weight‑magnitude distributions and “trained‑init on random data” controls do not explain the coherence gap. The signal is tied to data/learning dynamics rather than just distance moved in weight space.
+
+Width studies (MLPs): Wider MLPs show increasing max coherence but also a widening generalization gap; coherence must be interpreted within comparable architectures.
+
+Diff histograms: When coherence peaks, diff distributions spread (more large‑magnitude diffs), aligning diffs with the coherence signal.
+
+Pruning:
+
+Diff‑based pruning often outperforms random and can beat magnitude pruning, including on ResNet‑50 and ViT at moderate sparsities.
+
+For a fixed non‑zero budget, sparse nets > equally sized dense nets—especially when the sparse model is pruned from a larger, better‑trained parent.
+
+Takeaway: Coherence provides a data‑aware criterion; diffs operationalize it for pruning and routinely produce smaller yet competitive models.
+
+4) Engineering Principles I Carry Forward
+
+Data‑aware signals beat architecture‑only heuristics. Diffs leverage the dataset—useful in pruning and beyond.
+
+Simple, inspectable metrics scale. A mean‑sign is cheap, stable, and easy to reason about.
+
+Measure, then modularize. Find the right signal (coherence), make it local (diffs), then productize (pruning pipelines).
+
+5) Selected Projects (where these principles show up)
+Thinky — Research Annotation Platform
+
+What: An offline‑first Electron desktop app for annotating PDFs, tagging ideas, and resurfacing passages instantly.
+
+How it echoes the thesis: Prioritizes signal discovery (fast, indexed retrieval) and local‑first robustness—practical, measurable UX wins over heavy machinery.
+
+Stack: ClojureScript (Reagent/re‑frame), Electron; signed installers for macOS/Windows/Linux.
+
+Highlights: Instant Item Finder; hierarchical tags; keyboard‑first flows.
+
+Lunar Lander — Optimal Control, Not “Just AI”
+
+What: A controller that lands a 2D lunar lander by chaining BVP trajectory optimization → LQR tracking → PID.
+
+How it echoes the thesis: Choose the right signal/control objective and lean on classical structure—like using diffs over raw magnitudes.
+
+Stack: Python (NumPy/SciPy), PyGame Zero integration.
+
+Atari Breakout — World Model + MCTS
+
+What: A LeCun‑style world model (transformer) that predicts future latent states, planning with MCTS.
+
+How it echoes the thesis: Explicit modeling of the dynamics signal enables planning; highlights limits where sparse rewards muddy signals—analogous to low‑coherence regimes.
+
+Stack: Python, PyTorch.
+
+Personal Finance Tracker — Full‑Stack Product Craft
+
+What: A production‑ready finance app with budgets, charts, bank import, reminders, and CSV export.
+
+How it echoes the thesis: End‑to‑end observability and data integrity—reliable signals (auth, encryption, real‑time sync) over flash; pragmatic scaling and CI/CD.
+
+Stack: React + TypeScript, Tailwind, Node/Express, PostgreSQL, Docker on AWS.
+
+6) Impact & What’s Next
+
+Smaller, better models: Diff‑pruned networks suggest a practical path to deployable sparsity, especially when derived from large parents.
+
+Generalization levers: Coherence/diffs point to training‑time diagnostics to detect when a model is learning signal vs. memorizing noise.
+
+Next questions:
+
+Can we integrate diffs into training‑from‑sparsity schedules (e.g., regrowth driven by diff drift)?
+
+How do diffs interact with attention heads, residual pathways, and normalization stats in modern architectures?
+
+Can we couple coherence with decision‑boundary geometry to predict generalization earlier?
+
+7) Acknowledgements
+
+Thanks to my advisors and collaborators who encouraged following the signal—even when it meant extra work. Their guidance helped turn a curiosity about gradients into concrete tools.
+
+8) Minimal Repro Notes (for readers)
+
+Compute coherence early in training; pick the epoch with the peak signal.
+
+Freeze; sweep dataset once to collect per‑example gradients; compute diffs.
+
+Prune smallest diffs; short fine‑tune; compare to magnitude & random baselines.
+
+If you only remember one line: Aligned gradients → transferable structure; diffs capture that alignment per weight; prune by diffs.

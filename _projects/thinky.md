@@ -4,6 +4,7 @@ technologies: [ClojureScript, Electron, Reagent, re-frame]
 demo_url: "https://www.thinky.dev/downloads"
 excerpt: "An offline-friendly Electron app that lets scholars highlight, tag, and instantly resurface PDF passages across multiple research projects."
 published: true
+sort_order: 10
 ---
 
 # Thinky

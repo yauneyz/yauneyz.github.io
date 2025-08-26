@@ -10,7 +10,10 @@ description: "A showcase of my technical projects and creative work"
   
   {% if site.projects.size > 0 %}
     <div class="content-list">
-      {% assign sorted_projects = site.projects | where: 'published', true | sort: 'date' | reverse %}
+      {% assign published_projects = site.projects | where: 'published', true %}
+      {% assign projects_with_order = published_projects | where_exp: 'item', 'item.sort_order' | sort: 'sort_order' %}
+      {% assign projects_without_order = published_projects | where_exp: 'item', 'item.sort_order == nil' | sort: 'date' | reverse %}
+      {% assign sorted_projects = projects_with_order | concat: projects_without_order %}
       {% for project in sorted_projects %}
         <article class="content-item">
           <div class="content-item-header">
