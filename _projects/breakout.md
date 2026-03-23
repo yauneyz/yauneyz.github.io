@@ -2,7 +2,7 @@
 title: "Atari Breakout Playing Neural Network"
 technologies: [Python, PyTorch]
 github_url: "https://github.com/yauneyz/breakout"
-excerpt: "A neural network trained to play Atari Breakout. Instead of using the traditional Q-learning technique, we implemented Yann LeCun's world model architecture combined with Monte Carlo Tree Search"
+excerpt: "A neural network trained to play Atari Breakout. Instead of using the traditional Q-learning technique, we implemented a world model architecture combined with Monte Carlo Tree Search"
 published: true
 sort_order: 90
 ---
