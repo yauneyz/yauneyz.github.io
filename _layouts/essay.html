@@ -2,33 +2,36 @@
 layout: default
 ---
 
-<article class="max-w-4xl mx-auto">
-  
-  
-  <div class="prose prose-lg prose-invert max-w-none">
-    {{ content }}
-  </div>
-  
-  {% if page.substack_url %}
-    <div class="mt-8 p-4 bg-gray-800 rounded-lg">
-      <p class="text-sm text-gray-300">
-        Originally published on 
-        <a href="{{ page.substack_url }}" class="text-blue-400 hover:underline" target="_blank" rel="noopener">
-          Substack
-        </a>
-      </p>
+<article class="container-narrow article-wrap">
+  <header class="page-header" data-reveal>
+    <span class="eyebrow">Essay</span>
+    <h1 class="page-title">{{ page.title }}</h1>
+    <div class="article-meta">
+      {% if page.date %}
+        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%b %d, %Y" }}</time>
+      {% endif %}
+      {% if page.read_time %}<span>{{ page.read_time }} min read</span>{% endif %}
+      {% if page.tags %}
+        {% for tag in page.tags %}<span>#{{ tag }}</span>{% endfor %}
+      {% endif %}
     </div>
-  {% endif %}
-  
-  <footer class="mt-12 pt-8 border-t border-gray-700">
-    <div class="flex justify-between items-center">
-      <a href="/essays" class="text-blue-400 hover:underline">
-        ← Back to Essays
-      </a>
-      
-      <div class="text-sm text-gray-400">
-        Share this essay
+  </header>
+
+  <div class="surface" data-reveal data-delay="1">
+    <div class="prose prose-invert">
+      {{ content }}
+    </div>
+
+    {% if page.substack_url %}
+      <div class="article-source">
+        Originally published on
+        <a href="{{ page.substack_url }}" class="link" target="_blank" rel="noopener">Substack ↗</a>
       </div>
-    </div>
+    {% endif %}
+  </div>
+
+  <footer class="article-back">
+    <a href="/essays" class="link">← Back to Essays</a>
+    <span class="footer-meta">/ essays</span>
   </footer>
 </article>

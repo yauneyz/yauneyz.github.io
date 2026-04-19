@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(command -v ruby jekyll rbenv rvm)",
+      "Read(//nix/store/c97midx698qmb8ph1dzy9b67k25bkp2j-user-environment/bin/**)"
+    ]
+  }
+}

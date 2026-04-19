@@ -1,23 +1,16 @@
 {% assign all_tags = site.essays | map: 'tags' | join: ',' | split: ',' | uniq | sort %}
 
-<div class="mb-6">
-  <div class="flex flex-wrap items-center gap-2 mb-4">
-    <span class="text-sm font-medium text-secondary mr-2">Filter by tag:</span>
-    
-    <button class="tag-button" data-tag="all">
-      All
-    </button>
-    
+<div class="filter-bar" data-reveal>
+  <div class="filter-chips">
+    <span class="filter-label">Filter</span>
+    <button class="tag-button" data-tag="all" type="button">All</button>
     {% for tag in all_tags %}
       {% unless tag == empty %}
-        <button class="tag-button" data-tag="{{ tag | strip }}">
+        <button class="tag-button" data-tag="{{ tag | strip }}" type="button">
           {{ tag | strip }}
         </button>
       {% endunless %}
     {% endfor %}
   </div>
-  
-  <div class="text-sm text-muted">
-    <span class="essay-count"></span>
-  </div>
+  <span class="essay-count" aria-live="polite"></span>
 </div>

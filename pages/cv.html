@@ -2,173 +2,167 @@
 layout: default
 title: "CV"
 permalink: /cv/
-description: "Professional experience, skills, and background"
+description: "Professional experience, education, and technical skills."
 ---
 
-<div class="max-w-4xl mx-auto">
+<div class="container-narrow">
+  <header class="page-header" data-reveal>
+    <span class="eyebrow">Curriculum Vitae</span>
+    <h1 class="page-title">{{ site.data.cv.personal.name }}</h1>
+    <p class="page-lede">{{ site.data.cv.personal.title }}</p>
+  </header>
 
+  <div class="cv-grid">
 
-  <!-- Summary -->
-  {% if site.data.cv.summary %}
-    <section class="mb-8">
-      <h2 class="text-2xl font-semibold text-gray-100 mb-4 border-b-2 border-blue-400 pb-2">Summary</h2>
-      <p class="text-gray-300 leading-relaxed">{{ site.data.cv.summary }}</p>
-    </section>
-  {% endif %}
-
-  <!-- Experience -->
-  {% if site.data.cv.experience %}
-    <section class="mb-8">
-      <h2 class="text-2xl font-semibold text-gray-100 mb-6 border-b-2 border-blue-400 pb-2">Experience</h2>
-
-      {% for job in site.data.cv.experience %}
-        <div class="mb-6 bg-gray-800 rounded-lg shadow-sm border border-gray-700 p-6">
-          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-3">
-            <div>
-              <h3 class="text-xl font-semibold text-gray-100">{{ job.position }}</h3>
-              <p class="text-lg text-blue-400 font-medium">{{ job.company }}</p>
-            </div>
-            <div class="text-sm text-gray-300 mt-1 sm:mt-0 sm:text-right">
-              <div>{{ job.duration }}</div>
-              <div>{{ job.location }}</div>
-            </div>
-          </div>
-
-          {% if job.highlights %}
-            <ul class="list-disc list-inside space-y-1 text-gray-300">
-              {% for highlight in job.highlights %}
-                <li>{{ highlight }}</li>
-              {% endfor %}
-            </ul>
-          {% endif %}
+    {% if site.data.cv.summary %}
+      <section class="cv-section" data-reveal>
+        <div class="cv-section-head">
+          <span class="cv-section-num">01</span>
+          <h2 class="cv-section-title">Summary</h2>
         </div>
-      {% endfor %}
-    </section>
-  {% endif %}
+        <p class="cv-summary">{{ site.data.cv.summary }}</p>
+      </section>
+    {% endif %}
 
-  <!-- Education -->
-  {% if site.data.cv.education %}
-    <section class="mb-8">
-      <h2 class="text-2xl font-semibold text-gray-100 mb-6 border-b-2 border-blue-400 pb-2">Education</h2>
-
-      {% for edu in site.data.cv.education %}
-        <div class="mb-4 bg-gray-800 rounded-lg shadow-sm border border-gray-700 p-6">
-          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start">
-            <div>
-              <h3 class="text-lg font-semibold text-gray-100">{{ edu.degree }}</h3>
-              <p class="text-blue-400 font-medium">{{ edu.institution }}</p>
-              {% if edu.details %}
-                <p class="text-sm text-gray-300 mt-1">{{ edu.details }}</p>
-              {% endif %}
-            </div>
-            <div class="text-sm text-gray-300 mt-1 sm:mt-0 sm:text-right">
-              <div>{{ edu.year }}</div>
-              <div>{{ edu.location }}</div>
-            </div>
-          </div>
+    {% if site.data.cv.experience %}
+      <section class="cv-section" data-reveal>
+        <div class="cv-section-head">
+          <span class="cv-section-num">02</span>
+          <h2 class="cv-section-title">Experience</h2>
         </div>
-      {% endfor %}
-    </section>
-  {% endif %}
-
-  <!-- Skills -->
-  {% if site.data.cv.skills %}
-    <section class="mb-8">
-      <h2 class="text-2xl font-semibold text-gray-100 mb-6 border-b-2 border-blue-400 pb-2">Skills</h2>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Technical Skills -->
-        {% if site.data.cv.skills.technical %}
-          <div>
-            {% for skill_group in site.data.cv.skills.technical %}
-              <div class="mb-4">
-                <h4 class="font-medium text-gray-200 mb-2">{{ skill_group.category }}</h4>
-                <div class="flex flex-wrap gap-2">
-                  {% for skill in skill_group.items %}
-                    <span class="bg-blue-900 text-blue-200 px-3 py-1 rounded-full text-sm">
-                      {{ skill }}
-                    </span>
-                  {% endfor %}
+        <div class="cv-timeline">
+          {% for job in site.data.cv.experience %}
+            <article class="glass-card cv-card" data-reveal data-delay="{{ forloop.index0 | modulo: 4 }}">
+              <div class="cv-card-head">
+                <div>
+                  <h3 class="cv-role">{{ job.position }}</h3>
+                  <p class="cv-org">{{ job.company }}</p>
+                </div>
+                <div class="cv-meta">
+                  <div>{{ job.duration }}</div>
+                  {% if job.location %}<div>{{ job.location }}</div>{% endif %}
                 </div>
               </div>
-            {% endfor %}
-          </div>
-        {% endif %}
-
-      </div>
-    </section>
-  {% endif %}
-
-  <!-- Projects -->
-  {% if site.data.cv.projects %}
-    <section class="mb-8">
-      <h2 class="text-2xl font-semibold text-gray-100 mb-6 border-b-2 border-blue-400 pb-2">Notable Projects</h2>
-
-      {% for project in site.data.cv.projects %}
-        <div class="mb-4 bg-gray-800 rounded-lg shadow-sm border border-gray-700 p-6">
-          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
-            <h3 class="text-lg font-semibold text-gray-100">{{ project.name }}</h3>
-            {% if project.url %}
-              <a href="{{ project.url }}" class="text-blue-400 hover:text-blue-300 text-sm transition-colors" target="_blank" rel="noopener">
-                View Project →
-              </a>
-            {% endif %}
-          </div>
-
-          <p class="text-gray-300 mb-3">{{ project.description }}</p>
-
-          {% if project.technologies %}
-            <div class="flex flex-wrap gap-2">
-              {% for tech in project.technologies %}
-                <span class="bg-gray-700 text-gray-300 px-2 py-1 rounded text-sm">
-                  {{ tech }}
-                </span>
-              {% endfor %}
-            </div>
-          {% endif %}
+              {% if job.highlights %}
+                <ul class="cv-bullets">
+                  {% for highlight in job.highlights %}
+                    <li>{{ highlight }}</li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </article>
+          {% endfor %}
         </div>
-      {% endfor %}
-    </section>
-  {% endif %}
+      </section>
+    {% endif %}
 
-  <!-- Certifications -->
-  {% if site.data.cv.certifications %}
-    <section class="mb-8">
-      <h2 class="text-2xl font-semibold text-gray-100 mb-6 border-b-2 border-blue-400 pb-2">Certifications</h2>
+    {% if site.data.cv.education %}
+      <section class="cv-section" data-reveal>
+        <div class="cv-section-head">
+          <span class="cv-section-num">03</span>
+          <h2 class="cv-section-title">Education</h2>
+        </div>
+        <div class="cv-timeline">
+          {% for edu in site.data.cv.education %}
+            <article class="glass-card cv-card" data-reveal data-delay="{{ forloop.index0 | modulo: 4 }}">
+              <div class="cv-card-head">
+                <div>
+                  <h3 class="cv-role">{{ edu.degree }}</h3>
+                  <p class="cv-org">{{ edu.institution }}</p>
+                  {% if edu.details %}
+                    <p class="content-item-excerpt" style="margin-top: 0.4rem;">{{ edu.details }}</p>
+                  {% endif %}
+                </div>
+                <div class="cv-meta">
+                  <div>{{ edu.year }}</div>
+                  {% if edu.location %}<div>{{ edu.location }}</div>{% endif %}
+                </div>
+              </div>
+            </article>
+          {% endfor %}
+        </div>
+      </section>
+    {% endif %}
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {% for cert in site.data.cv.certifications %}
-          <div class="bg-gray-800 rounded-lg shadow-sm border border-gray-700 p-4">
-            <h3 class="font-semibold text-gray-100">{{ cert.name }}</h3>
-            <p class="text-blue-400 text-sm">{{ cert.issuer }}</p>
-            <p class="text-gray-300 text-sm">{{ cert.year }}</p>
-          </div>
-        {% endfor %}
-      </div>
-    </section>
-  {% endif %}
+    {% if site.data.cv.skills.technical %}
+      <section class="cv-section" data-reveal>
+        <div class="cv-section-head">
+          <span class="cv-section-num">04</span>
+          <h2 class="cv-section-title">Skills</h2>
+        </div>
+        <div class="cv-skills-grid">
+          {% for skill_group in site.data.cv.skills.technical %}
+            <div class="cv-skill-group" data-reveal data-delay="{{ forloop.index0 | modulo: 4 }}">
+              <span class="cv-skill-label">{{ skill_group.category }}</span>
+              <div class="cv-skill-chips">
+                {% for skill in skill_group.items %}
+                  <span class="cv-skill-chip">{{ skill }}</span>
+                {% endfor %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </section>
+    {% endif %}
 
-  <!-- Languages -->
-  {% if site.data.cv.languages %}
-    <section class="mb-8">
-      <h2 class="text-2xl font-semibold text-gray-100 mb-6 border-b-2 border-blue-400 pb-2">Languages</h2>
+    {% if site.data.cv.projects %}
+      <section class="cv-section" data-reveal>
+        <div class="cv-section-head">
+          <span class="cv-section-num">05</span>
+          <h2 class="cv-section-title">Notable Projects</h2>
+        </div>
+        <div class="content-list">
+          {% for project in site.data.cv.projects %}
+            <article class="glass-card" data-tilt data-reveal data-delay="{{ forloop.index0 | modulo: 4 }}">
+              <div class="content-item">
+                <div class="content-item-header">
+                  <h3 class="content-item-title">
+                    {% if project.url %}
+                      <a href="{{ project.url }}" target="_blank" rel="noopener" data-no-transition>{{ project.name }}</a>
+                    {% else %}
+                      {{ project.name }}
+                    {% endif %}
+                  </h3>
+                </div>
+                <p class="content-item-excerpt">{{ project.description }}</p>
+                {% if project.technologies %}
+                  <div class="content-item-tags">
+                    {% for tech in project.technologies %}
+                      <span class="tag tag-success">{{ tech }}</span>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+                {% if project.url %}
+                  <div class="content-item-footer">
+                    <span></span>
+                    <a href="{{ project.url }}" class="link" target="_blank" rel="noopener" data-no-transition>
+                      Visit ↗
+                    </a>
+                  </div>
+                {% endif %}
+              </div>
+            </article>
+          {% endfor %}
+        </div>
+      </section>
+    {% endif %}
 
-      <div class="flex flex-wrap gap-4">
-        {% for lang in site.data.cv.languages %}
-          <div class="bg-gray-800 rounded-lg shadow-sm border border-gray-700 p-4">
-            <h3 class="font-semibold text-gray-100">{{ lang.language }}</h3>
-            <p class="text-gray-300 text-sm">{{ lang.proficiency }}</p>
-          </div>
-        {% endfor %}
-      </div>
-    </section>
-  {% endif %}
+    {% if site.data.cv.languages %}
+      <section class="cv-section" data-reveal>
+        <div class="cv-section-head">
+          <span class="cv-section-num">06</span>
+          <h2 class="cv-section-title">Languages</h2>
+        </div>
+        <div class="cv-langs">
+          {% for lang in site.data.cv.languages %}
+            <div class="glass-card cv-lang" data-reveal data-delay="{{ forloop.index0 | modulo: 4 }}">
+              <span class="cv-lang-name">{{ lang.language }}</span>
+              <span class="cv-lang-prof">{{ lang.proficiency }}</span>
+            </div>
+          {% endfor %}
+        </div>
+      </section>
+    {% endif %}
+
+  </div>
 </div>
-
-<style>
-@media print {
-  .print\:hidden { display: none !important; }
-  .shadow-sm, .shadow-md, .shadow-lg { box-shadow: none !important; }
-  .border { border: 1px solid #e5e7eb !important; }
-}
-</style>

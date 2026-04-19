@@ -2,10 +2,20 @@
 layout: default
 ---
 
-<div class="max-w-4xl mx-auto">
-  
-  
-  <div class="prose prose-lg prose-invert max-w-none">
-    {{ content }}
+<div class="container-narrow">
+  {% if page.title %}
+    <header class="page-header" data-reveal>
+      <span class="eyebrow">Page</span>
+      <h1 class="page-title">{{ page.title }}</h1>
+      {% if page.description %}
+        <p class="page-lede">{{ page.description }}</p>
+      {% endif %}
+    </header>
+  {% endif %}
+
+  <div class="surface" data-reveal data-delay="1">
+    <div class="prose prose-invert">
+      {{ content }}
+    </div>
   </div>
 </div>

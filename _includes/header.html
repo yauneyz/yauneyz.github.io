@@ -1,31 +1,15 @@
 <header class="site-header">
   <div class="container">
-    <a href="/" class="site-title">
-      Zac Yauney
-    </a>
-    <nav class="site-nav">
-      <a href="/essays" class="nav-link">Essays</a>
-      <a href="/projects" class="nav-link">Projects</a>
-      <a href="/cv" class="nav-link">CV</a>
-    </nav>
+    <div class="header-inner">
+      <a href="/" class="site-title" data-no-transition>
+        Zac Yauney<span class="dot" aria-hidden="true"></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <span class="nav-indicator" aria-hidden="true"></span>
+        <a href="/essays" class="nav-link">Essays</a>
+        <a href="/projects" class="nav-link">Projects</a>
+        <a href="/cv" class="nav-link">CV</a>
+      </nav>
+    </div>
   </div>
 </header>
-
-  <style>
-  .site-title {
-    color: var(--text-primary);
-    text-decoration: none;
-    transition: color var(--transition-fast);
-  }
-
-
-  .site-nav .nav-link {
-    color: var(--accent-primary);
-    text-decoration: none;
-    transition: color var(--transition-fast);
-  }
-
-  .site-nav .nav-link:hover {
-    color: var(--accent-primary-hover);
-  }
-</style>
